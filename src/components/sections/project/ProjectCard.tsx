@@ -1,5 +1,6 @@
 import {ExternalLink, Github} from "lucide-react";
 import {motion} from "framer-motion";
+import {useNavigate} from "react-router-dom";
 
 const itemVariants = {
     hidden: {opacity: 0, y: 20},
@@ -19,14 +20,17 @@ interface ProjectCardProps {
     tags: string[],
     githubUrl: string,
     liveUrl: string,
+    slug: string,
 }
 
 const ProjectCard = (project: ProjectCardProps) => {
+    const navigate = useNavigate();
 
     return (
         <motion.div
             variants={itemVariants}
             className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+            onClick={() => navigate(`/project/${project.slug}`)}
         >
             <div className="relative aspect-video overflow-hidden">
                 <img
@@ -74,7 +78,7 @@ const ProjectCard = (project: ProjectCardProps) => {
                             className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
                         >
                             <ExternalLink className="w-5 h-5"/>
-                            Live Demo
+                            {project.title}
                         </a>
                     )}
                 </div>

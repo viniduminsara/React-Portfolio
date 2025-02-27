@@ -74,9 +74,11 @@ const BlogCard = (post: BlogCardProps) => {
 
                 <a
                     href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
                 >
-                    Read More
+                    Read in Medium
                     <ArrowRight className="w-4 h-4"/>
                 </a>
             </div>

@@ -10,12 +10,17 @@ import {
     Server,
     Shapes,
     Share2,
-    Wind
+    Wind,
+    Cpu,
+    Coffee,
+    ShipWheel,
+    HardDrive
 } from "lucide-react";
 
 export const AllSkills = {
     languages: [
-        {name: 'Java', icon: Leaf},
+        {name: 'Java', icon: Coffee},
+        {name: 'Python', icon: Cpu},
         {name: 'JavaScript', icon: FileJson},
         {name: 'TypeScript', icon: Code2}
     ],
@@ -27,12 +32,19 @@ export const AllSkills = {
     ],
     backend: [
         {name: 'Spring Boot', icon: Leaf},
-        {name: 'Node.js', icon: Server},
         {name: 'Express', icon: Laptop},
-        {name: 'MongoDB', icon: Database}
+        {name: 'Flask', icon: Server},
     ],
-    tools: [
+    database: [
+        {name: 'MySQL', icon: HardDrive},
+        {name: 'MongoDB', icon: Database},
+    ],
+    cloud: [
         {name: 'AWS', icon: LayoutGrid},
-        {name: 'Figma', icon: Figma}
+        {name: 'Docker', icon: ShipWheel},
+        {name: 'NGINX', icon: Server},
+    ],
+    Design: [
+        {name: 'Figma', icon: Figma},
     ]
 };

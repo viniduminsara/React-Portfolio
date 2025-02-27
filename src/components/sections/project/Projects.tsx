@@ -1,9 +1,9 @@
 import {motion} from 'framer-motion';
 import {useInView} from 'react-intersection-observer';
-import {ExternalLink, Github, ArrowRight} from 'lucide-react';
+import {ArrowRight} from 'lucide-react';
 import {Link} from 'react-router-dom';
 import ProjectCard from "./ProjectCard.tsx";
-import {HomeProjects} from "../../../constants/project.ts";
+import {AllProjects} from "../../../constants/project.ts";
 
 const containerVariants = {
     hidden: {opacity: 0},
@@ -39,7 +39,7 @@ export default function Projects() {
                     animate={inView ? "visible" : "hidden"}
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {HomeProjects.map((project, index) => (
+                    {AllProjects.slice(0, 3).map((project, index) => (
                         <ProjectCard key={index} {...project}/>
                     ))}
                 </motion.div>

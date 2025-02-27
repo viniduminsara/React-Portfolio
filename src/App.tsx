@@ -4,6 +4,7 @@ import BlogPage from './pages/BlogPage';
 import HomePage from "./pages/HomePage.tsx";
 import {Toaster} from "react-hot-toast";
 import Layout from "./components/Layout.tsx";
+import ProjectPage from "./pages/ProjectPage.tsx";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/projects" element={<ProjectsPage/>}/>
                     <Route path="/blog" element={<BlogPage/>}/>
+                    <Route path="/project/:name" element={<ProjectPage/>}/>
                 </Route>
             </Routes>
             <Toaster position="top-right" reverseOrder={false} />
