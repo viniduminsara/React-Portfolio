@@ -4,12 +4,18 @@ import {motion} from 'framer-motion';
 import {Link, useLocation} from 'react-router-dom';
 import logo from '../assets/img/logo.png'
 
+// const navItems = [
+//     {name: 'About', type: 'hash'},
+//     {name: 'Projects', type: 'hash'},
+//     {name: 'Skills', type: 'hash'},
+//     {name: 'Blogs', type: 'hash',},
+//     {name: 'Contact', type: 'hash'}
+// ];
+
 const navItems = [
-    {name: 'About', type: 'hash'},
-    {name: 'Projects', type: 'hash'},
-    {name: 'Skills', type: 'hash'},
-    {name: 'Blogs', type: 'hash',},
-    {name: 'Contact', type: 'hash'}
+    {name: 'Home', path: '/'},
+    {name: 'Projects', path: '/projects'},
+    {name: 'Blogs', path: '/blogs',},
 ];
 
 interface NavbarProps {

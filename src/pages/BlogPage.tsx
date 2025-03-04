@@ -2,7 +2,8 @@ import {motion} from 'framer-motion';
 import {ArrowLeft} from 'lucide-react';
 import {Link, useLocation} from 'react-router-dom';
 import BlogCard from "../components/sections/blog/BlogCard.tsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {fetchMediumBlogs} from "../service/apiService.ts";
 
 const containerVariants = {
     hidden: {opacity: 0},
@@ -15,12 +16,16 @@ const containerVariants = {
 };
 
 export default function BlogPage() {
-    const location = useLocation();
-    const blogs = location.state?.blogs || [];
-
+    const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        fetchMediumBlogs().then(data => {
+            setBlogs(data);
+        });
     }, []);
 
     return (

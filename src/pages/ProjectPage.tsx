@@ -44,6 +44,10 @@ const ProjectPage = () => {
     const [project, setProject] = useState<Project>();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         const project = AllProjects.find((item) => item.slug === name);
         setProject(project);
     }, [name]);

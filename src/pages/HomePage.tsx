@@ -5,7 +5,6 @@ import Projects from "../components/sections/project/Projects.tsx";
 import Skills from "../components/sections/skill/Skills.tsx";
 import Blog from "../components/sections/blog/Blog.tsx";
 import Contact from "../components/sections/Contact.tsx";
-import Footer from "../components/Footer.tsx";
 
 const HomePage = () => (
     <>

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import BlogCard from "./BlogCard.tsx";
 import {useEffect, useState} from "react";
 import errorImg from "../../../assets/img/503-error-service-unavailable.png"
+import {fetchMediumBlogs} from "../../../service/apiService.ts";
 
 const containerVariants = {
     hidden: {opacity: 0},
@@ -22,21 +23,10 @@ export default function Blog() {
     });
     const [blogs, setBlogs] = useState([]);
 
-    const fetchMediumBlogs = async () => {
-        try {
-            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@viniduminsara');
-            if (!response.ok) {
-                throw new Error('Failed to fetch blog posts');
-            }
-            const data = await response.json();
-            setBlogs(data.items);
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-
     useEffect(() => {
-        fetchMediumBlogs();
+        fetchMediumBlogs().then(data => {
+            setBlogs(data);
+        });
     }, []);
 
     return (
@@ -71,7 +61,7 @@ export default function Blog() {
                         className="flex justify-center"
                     >
                         <Link
-                            to="/blog"
+                            to="/blogs"
                             state={{blogs}}
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-colors duration-200"
                         >
