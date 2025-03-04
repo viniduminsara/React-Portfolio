@@ -1,7 +1,11 @@
 import {motion, AnimatePresence} from 'framer-motion';
 import {X} from 'lucide-react';
 
-const navItems = ['About', 'Projects', 'Skills', 'Blogs', 'Contact'];
+const navItems = [
+    {name: 'Home', path: '/'},
+    {name: 'Projects', path: '/projects'},
+    {name: 'Blogs', path: '/blogs',},
+];
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -64,14 +68,14 @@ export default function MobileMenu({isOpen, onClose}: MobileMenuProps) {
                         <nav className="space-y-4">
                             {navItems.map((item, i) => (
                                 <motion.a
-                                    key={item}
-                                    href={`#${item.toLowerCase()}`}
+                                    key={item.name}
+                                    href={item.path}
                                     onClick={onClose}
                                     variants={itemVariants}
                                     transition={{delay: i * 0.1}}
                                     className="block text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                                 >
-                                    {item}
+                                    {item.name}
                                 </motion.a>
                             ))}
                         </nav>
