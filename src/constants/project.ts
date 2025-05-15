@@ -15,7 +15,7 @@ export const AllProjects = [
         image: 'https://res.cloudinary.com/di22m4v3n/image/upload/q_auto,f_auto/v1732361737/portfolio/clearlens_pcpggd.png',
         tags: ['React', 'Tailwind CSS', 'Express'],
         technologies: ['react', 'tailwind', 'express'],
-        githubUrl: 'https://github.com/viniduminsara/ClearLens',
+        githubUrl: 'https://github.com/viniduminsara/ClearLens-Web',
         liveUrl: 'https://clearlens.viniduminsara.dev',
         slug: 'clearlens',
     },
