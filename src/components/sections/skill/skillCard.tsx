@@ -20,7 +20,7 @@ const SkillCard = (skill: SkillCardProps) => {
     return (
         <motion.div
             variants={itemVariants}
-            className="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+            className="flex items-center gap-3 p-3 bg-white/30 dark:bg-white/5 rounded-lg border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-md transition-shadow duration-200"
         >
             <Icon className="w-5 h-5 text-purple-600"/>
             <span className="text-gray-700 dark:text-gray-300">{skill.name}</span>

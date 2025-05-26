@@ -5,6 +5,7 @@ import Projects from "../components/sections/project/Projects.tsx";
 import Skills from "../components/sections/skill/Skills.tsx";
 import Blog from "../components/sections/blog/Blog.tsx";
 import Contact from "../components/sections/Contact.tsx";
+import Resume from "../components/sections/resume/Resume.tsx";
 
 const HomePage = () => (
     <>
@@ -23,6 +24,14 @@ const HomePage = () => (
                 viewport={{once: true}}
             >
                 <About/>
+            </motion.div>
+
+            <motion.div
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                viewport={{once: true}}
+            >
+                <Resume/>
             </motion.div>
 
             <motion.div

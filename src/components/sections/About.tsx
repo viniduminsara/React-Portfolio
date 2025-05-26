@@ -46,7 +46,7 @@ export default function About() {
                         transition={{duration: 0.5, delay: 0.4}}
                         className="grid grid-cols-2 gap-6"
                     >
-                        <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
                             <Laptop className="w-8 h-8 text-purple-600 mb-4"/>
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                 Frontend Development
@@ -56,7 +56,7 @@ export default function About() {
                             </p>
                         </div>
 
-                        <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
                             <Code2 className="w-8 h-8 text-purple-600 mb-4"/>
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                 Backend Development
@@ -66,7 +66,7 @@ export default function About() {
                             </p>
                         </div>
 
-                        <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-lg shadow-lg">
                             <Smartphone className="w-8 h-8 text-purple-600 mb-4"/>
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                 Mobile Development
@@ -76,7 +76,7 @@ export default function About() {
                             </p>
                         </div>
 
-                        <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
                             <Sparkles className="w-8 h-8 text-purple-600 mb-4"/>
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                 UI/UX Design

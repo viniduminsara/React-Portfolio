@@ -26,9 +26,9 @@ export const AllSkills = {
     ],
     frontend: [
         {name: 'React', icon: Globe},
+        {name: 'React Native', icon: Shapes},
         {name: 'Next.js', icon: Share2},
         {name: 'Tailwind CSS', icon: Wind},
-        {name: 'Redux', icon: Shapes}
     ],
     backend: [
         {name: 'Spring Boot', icon: Leaf},

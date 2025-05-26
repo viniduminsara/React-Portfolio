@@ -29,7 +29,7 @@ const ProjectCard = (project: ProjectCardProps) => {
     return (
         <motion.div
             variants={itemVariants}
-            className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+            className="group bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-xl transition-all duration-300"
             onClick={() => navigate(`/project/${project.slug}`)}
         >
             <div className="relative aspect-video overflow-hidden">
@@ -78,7 +78,7 @@ const ProjectCard = (project: ProjectCardProps) => {
                             className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
                         >
                             <ExternalLink className="w-5 h-5"/>
-                            {project.title}
+                            Live Project
                         </a>
                     )}
                 </div>

@@ -37,7 +37,7 @@ const BlogCard = (post: BlogCardProps) => {
     return (
         <motion.article
             variants={itemVariants}
-            className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+            className="group bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-xl transition-all duration-300"
         >
             <div className="relative aspect-video overflow-hidden">
                 <img

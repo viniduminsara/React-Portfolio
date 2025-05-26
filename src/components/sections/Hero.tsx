@@ -63,7 +63,7 @@ export default function Hero() {
                             href="https://github.com/viniduminsara"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 lg:px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium transition-colors duration-200"
+                            className="inline-flex items-center gap-2 px-4 lg:px-6 py-3 rounded-full bg-white/30 dark:bg-white/5 border border-white/10 backdrop-blur-3xl shadow-lg text-gray-900 dark:text-white font-medium transition-colors duration-200"
                             whileHover={{scale: 1.05}}
                             whileTap={{scale: 0.95}}
                         >
@@ -74,7 +74,7 @@ export default function Hero() {
                             href="https://www.linkedin.com/in/vinidu-minsara/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium transition-colors duration-200"
+                            className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/30 dark:bg-white/5 border border-white/10 backdrop-blur-3xl shadow-lg text-gray-900 dark:text-white font-medium transition-colors duration-200"
                             whileHover={{scale: 1.05}}
                             whileTap={{scale: 0.95}}
                         >
