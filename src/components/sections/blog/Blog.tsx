@@ -48,7 +48,7 @@ export default function Blog() {
                     animate={inView ? "visible" : "hidden"}
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {blogs.map((post, index) => (
+                    {blogs.slice(0, 3).map((post, index) => (
                         <BlogCard key={index} {...post}/>
                     ))}
                 </motion.div>
