@@ -18,13 +18,13 @@ export const educationData = [
 
 export const experienceData = [
     {
+        year: "2025",
+        title: "Undergraduate Trainee",
+        description: "IFS",
+    },
+    {
         year: "2024 - 2025",
         title: "Trainee Software Engineer",
         description: "Ceyentra Technologies",
-    },
-    {
-        year: "2024 - Present",
-        title: "Freelance Software Developer",
-        description: "Upwork, Fiverr",
     },
 ];
