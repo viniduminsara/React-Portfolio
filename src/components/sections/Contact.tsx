@@ -1,8 +1,7 @@
 import {motion} from 'framer-motion';
 import {useInView} from 'react-intersection-observer';
-import {Mail, Github, ExternalLink, Import} from 'lucide-react';
+import {Mail, Github, ExternalLink} from 'lucide-react';
 import {useRef, useState} from "react";
-import emailjs from '@emailjs/browser';
 import toast from "react-hot-toast";
 
 export default function Contact() {
@@ -53,23 +52,36 @@ export default function Contact() {
             return;
         }
 
-        const key = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const url = import.meta.env.VITE_MESSAGEHUB_URL;
 
-        toast.promise(
-            emailjs
-                .sendForm(serviceId, templateId, form.current, {
-                    publicKey: key,
-                })
-            ,
-            {
-                loading: 'Sending...',
-                success: <b>Message sent!</b>,
-                error: <b>Could not send.</b>,
-            }
-        )
-            .then(() => form.current.reset());
+        if (!url) {
+            toast.error('Message service is not configured.');
+            return;
+        }
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: form.current?.name.value,
+                email: form.current?.email.value,
+                message: form.current?.message.value,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    toast.success('Message sent!');
+                    form.current?.reset();
+                } else {
+                    toast.error('Could not send message.');
+                }
+            })
+            .catch((e) => {
+                console.error('Error sending message:', e);
+                toast.error('Could not send message.');
+            });
     }
 
     return (
