@@ -2,93 +2,116 @@ import {motion} from 'framer-motion';
 
 const CodeBlock = () => {
     return (
-        <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.5}}
-            className="w-full max-w-2xl bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden font-mono text-sm"
+        <div
+            className="terminal-panel"
         >
-            <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800">
-                <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
+            <div className="terminal-panel-head">
+                <span style={{color: 'var(--text-muted)'}}>~/whoami.log</span>
+                <span>bash</span>
             </div>
-
-            <div className="p-6 text-gray-300 space-y-2">
+            <div className="terminal-panel-body">
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 0.2}}
                 >
-                    <span className="text-purple-400">class</span>{" "}
-                    <span className="text-yellow-400">Person</span> {"{"}
+                    <span style={{color: 'var(--amber)'}}>$</span>{' '}
+                    <span style={{color: 'var(--text)'}}>whoami</span>
                 </motion.div>
-
                 <motion.div
-                    initial={{opacity: 0, x: -20}}
-                    animate={{opacity: 1, x: 0}}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
                     transition={{delay: 0.4}}
-                    className="pl-4"
+                    style={{color: 'var(--text-muted)'}}
                 >
-                    <span className="text-purple-400">Person</span>() {"{"}
+                    vinidu_minsara
                 </motion.div>
-
+                <br/>
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 0.6}}
-                    className="pl-8"
+                    className="flex gap-2.5"
                 >
-                    <span className="text-blue-400">this</span>.
-                    <span className="text-purple-400">name</span> ={" "}
-                    <span className="text-green-400">"Vinidu Minsara"</span>;
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>role</span>
+                    <span style={{color: 'var(--text)'}}>fullstack_developer</span>
                 </motion.div>
-
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 0.8}}
-                    className="pl-8"
+                    className="flex gap-2.5"
                 >
-                    <span className="text-blue-400">this</span>.
-                    <span className="text-purple-400">age</span> ={" "}
-                    <span className="text-orange-400">Year</span>.
-                    <span className="text-yellow-400">now</span>().
-                    <span className="text-yellow-400">getValue</span>()-
-                    <span className="text-green-400">2005</span>;
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>frontend</span>
+                    <span style={{color: 'var(--text)'}}>react · angular</span>
                 </motion.div>
-
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
-                    transition={{delay: 1}}
-                    className="pl-8"
+                    transition={{delay: 1.0}}
+                    className="flex gap-2.5"
                 >
-                    <span className="text-blue-400">this</span>.
-                    <span className="text-purple-400">gender</span> ={" "}
-                    <span className="text-green-400">"Male"</span>;
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>backend</span>
+                    <span style={{color: 'var(--text)'}}>node.js · spring_boot</span>
                 </motion.div>
-
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 1.2}}
-                    className="pl-4"
+                    className="flex gap-2.5"
                 >
-                    {"}"}
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>ai/ml</span>
+                    <span style={{color: 'var(--text)'}}>pytorch · scikit-learn</span>
                 </motion.div>
-
+                <motion.div
+                    initial={{opacity: 0, x: -20}}
+                    animate={{opacity: 1, x: 0}}
+                    transition={{delay: 1.3}}
+                    className="flex gap-2.5"
+                >
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>infra</span>
+                    <span style={{color: 'var(--text)'}}>docker · aws</span>
+                </motion.div>
                 <motion.div
                     initial={{opacity: 0, x: -20}}
                     animate={{opacity: 1, x: 0}}
                     transition={{delay: 1.4}}
+                    className="flex gap-2.5"
                 >
-                    {"}"}
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>location</span>
+                    <span style={{color: 'var(--text)'}}>kalutara, sri lanka</span>
+                </motion.div>
+                <motion.div
+                    initial={{opacity: 0, x: -20}}
+                    animate={{opacity: 1, x: 0}}
+                    transition={{delay: 1.6}}
+                    className="flex gap-2.5"
+                >
+                    <span style={{color: 'var(--ok)'}}>[ OK ]</span>
+                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>education</span>
+                    <span style={{color: 'var(--text)'}}>bsc_software_engineering</span>
+                </motion.div>
+                <br/>
+                <motion.div
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{delay: 1.8}}
+                >
+                    <span style={{color: 'var(--amber)'}}>$</span>{' '}
+                    <span className="inline-block w-2 h-[15px]" style={{
+                        background: 'var(--amber)',
+                        verticalAlign: '-2px',
+                        animation: 'blink 1.5s step-end infinite'
+                    }}/>
                 </motion.div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 

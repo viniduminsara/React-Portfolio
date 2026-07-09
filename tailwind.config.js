@@ -5,18 +5,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        purple: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
+        terminal: {
+          bg: '#0B0F0D',
+          panel: '#10150F',
+          border: '#23301F',
+          amber: '#F2A900',
+          'amber-dim': '#7A5600',
+          'amber-glow': 'rgba(242,169,0,0.14)',
+          text: '#E8E6DE',
+          muted: '#8B9088',
+          ok: '#6FCF7C',
         },
+      },
+      fontFamily: {
+        mono: ['IBM Plex Mono', 'monospace'],
+        sans: ['IBM Plex Sans', 'sans-serif'],
       },
     },
   },

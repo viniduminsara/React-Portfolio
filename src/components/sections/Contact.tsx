@@ -5,55 +5,31 @@ import {useRef, useState} from "react";
 import toast from "react-hot-toast";
 
 export default function Contact() {
-    const [ref, inView] = useInView({
-        threshold: 0.1
-    });
+    const [ref, inView] = useInView({threshold: 0.1});
     const form = useRef<HTMLFormElement>();
-    const [errors, setErrors] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const [errors, setErrors] = useState({name: '', email: '', message: ''});
 
     const validateForm = () => {
-        const formData = new FormData(form.current!); // Use the non-null assertion operator
+        const formData = new FormData(form.current!);
         const name = (formData.get("name") as string)?.trim() || "";
         const email = (formData.get("email") as string)?.trim() || "";
         const message = (formData.get("message") as string)?.trim() || "";
         const newErrors: {name: string, email: string, message: string} = {};
 
-        // Name validation
-        if (!name) {
-            newErrors.name = "Name is required.";
-        }
-
-        // Email validation
-        if (!email) {
-            newErrors.email = "Email is required.";
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            newErrors.email = "Please enter a valid email address.";
-        }
-
-        // Message validation
-        if (!message) {
-            newErrors.message = "Message is required.";
-        }
+        if (!name) newErrors.name = "Name is required.";
+        if (!email) newErrors.email = "Email is required.";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = "Please enter a valid email address.";
+        if (!message) newErrors.message = "Message is required.";
 
         setErrors(newErrors);
-
         return Object.keys(newErrors).length === 0;
     };
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
 
         const url = import.meta.env.VITE_MESSAGEHUB_URL;
-
         if (!url) {
             toast.error('Message service is not configured.');
             return;
@@ -61,9 +37,7 @@ export default function Contact() {
 
         fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 name: form.current?.name.value,
                 email: form.current?.email.value,
@@ -84,6 +58,19 @@ export default function Contact() {
             });
     }
 
+    const inputStyle = (hasError: boolean) => ({
+        background: 'var(--panel)',
+        border: `1px solid ${hasError ? '#ef4444' : 'var(--panel-border)'}`,
+        color: 'var(--text)',
+        fontFamily: "'IBM Plex Mono', monospace",
+        fontSize: '13px',
+        padding: '10px 14px',
+        borderRadius: '3px',
+        width: '100%',
+        outline: 'none',
+        transition: 'border-color 0.2s',
+    });
+
     return (
         <section id="contact" className="py-20" ref={ref}>
             <div className="space-y-12">
@@ -93,8 +80,8 @@ export default function Contact() {
                     transition={{duration: 0.5}}
                     className="space-y-4"
                 >
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Get in Touch</h2>
-                    <div className="w-20 h-1 bg-purple-600"></div>
+                    <h2 className="section-title">Get in Touch</h2>
+                    <div className="section-divider"></div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12">
@@ -104,7 +91,7 @@ export default function Contact() {
                         transition={{duration: 0.5, delay: 0.2}}
                         className="space-y-6"
                     >
-                        <p className="text-lg text-gray-600 dark:text-gray-300">
+                        <p className="text-lg leading-relaxed" style={{color: 'var(--text-muted)'}}>
                             I'm always interested in hearing about new projects and opportunities.
                             Whether you have a question or just want to say hi, feel free to reach out!
                         </p>
@@ -112,7 +99,10 @@ export default function Contact() {
                         <div className="space-y-4">
                             <a
                                 href="mailto:viniduminsara@gmail.com"
-                                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                                className="inline-flex items-center gap-2 transition-colors no-underline"
+                                style={{color: 'var(--text-muted)'}}
+                                onMouseEnter={e => e.currentTarget.style.color = 'var(--amber)'}
+                                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                             >
                                 <Mail className="w-5 h-5"/>
                                 viniduminsara@gmail.com
@@ -122,7 +112,10 @@ export default function Contact() {
                                     href="https://github.com/viniduminsara"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                                    className="inline-flex items-center gap-2 transition-colors no-underline"
+                                    style={{color: 'var(--text-muted)'}}
+                                    onMouseEnter={e => e.currentTarget.style.color = 'var(--amber)'}
+                                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                                 >
                                     <Github className="w-5 h-5"/>
                                     GitHub
@@ -131,7 +124,10 @@ export default function Contact() {
                                     href="https://www.linkedin.com/in/vinidu-minsara/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                                    className="inline-flex items-center gap-2 transition-colors no-underline"
+                                    style={{color: 'var(--text-muted)'}}
+                                    onMouseEnter={e => e.currentTarget.style.color = 'var(--amber)'}
+                                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                                 >
                                     <ExternalLink className="w-5 h-5"/>
                                     LinkedIn
@@ -149,53 +145,56 @@ export default function Contact() {
                         onSubmit={handleSubmit}
                     >
                         <div>
-                            <label htmlFor="name"
-                                   className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label htmlFor="name" className="block text-sm terminal-text mb-1" style={{color: 'var(--text-muted)'}}>
                                 Name
                             </label>
                             <input
                                 type="text"
                                 name="name"
-                                className={`mt-1 block w-full rounded-lg border ${
-                                    errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                                } bg-white dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-purple-500`}
+                                style={inputStyle(!!errors.name)}
+                                onFocus={e => e.target.style.borderColor = 'var(--amber)'}
+                                onBlur={e => { if (!errors.name) e.target.style.borderColor = 'var(--panel-border)' }}
                             />
                             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                         </div>
 
                         <div>
-                            <label htmlFor="email"
-                                   className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label htmlFor="email" className="block text-sm terminal-text mb-1" style={{color: 'var(--text-muted)'}}>
                                 Email
                             </label>
                             <input
                                 type="email"
                                 name="email"
-                                className={`mt-1 block w-full rounded-lg border ${
-                                    errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                                } bg-white dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-purple-500`}
+                                style={inputStyle(!!errors.email)}
+                                onFocus={e => e.target.style.borderColor = 'var(--amber)'}
+                                onBlur={e => { if (!errors.email) e.target.style.borderColor = 'var(--panel-border)' }}
                             />
                             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                         </div>
 
                         <div>
-                            <label htmlFor="message"
-                                   className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            <label htmlFor="message" className="block text-sm terminal-text mb-1" style={{color: 'var(--text-muted)'}}>
                                 Message
                             </label>
                             <textarea
                                 name="message"
                                 rows={4}
-                                className={`mt-1 block w-full rounded-lg border ${
-                                    errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                                } bg-white dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-purple-500`}
-                            ></textarea>
+                                style={inputStyle(!!errors.message)}
+                                onFocus={e => e.target.style.borderColor = 'var(--amber)'}
+                                onBlur={e => { if (!errors.message) e.target.style.borderColor = 'var(--panel-border)' }}
+                            />
                             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium transition-colors duration-200"
+                            className="terminal-text text-sm font-semibold px-6 py-3 rounded-sm w-full"
+                            style={{
+                                background: 'var(--amber)',
+                                color: '#1A1200',
+                                border: '1px solid transparent',
+                                cursor: 'pointer'
+                            }}
                         >
                             Send Message
                         </button>

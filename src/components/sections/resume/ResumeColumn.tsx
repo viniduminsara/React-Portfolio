@@ -1,4 +1,3 @@
-import {motion} from "framer-motion";
 import ResumeCard from "./ResumeCard.tsx";
 
 interface ResumeDataItem {
@@ -15,17 +14,8 @@ interface ResumeColumnProps {
 
 const ResumeColumn = ({ title, data, inView }: ResumeColumnProps) => (
     <section className="w-full px-4">
-        <motion.div
-            initial={{opacity: 0, y: 20}}
-            animate={inView ? {opacity: 1, y: 0} : {}}
-            transition={{duration: 0.5}}
-            className="space-y-4 mb-8"
-        >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{title}</h2>
-            <div className="w-20 h-1 bg-purple-600"></div>
-        </motion.div>
-        {/*<header className="text-emerald-600 text-xl font-bold mb-5">{title}</header>*/}
-        <div className="border-l-2 border-purple-600 pl-6">
+        <h2 className="text-2xl font-bold terminal-text mb-6" style={{color: 'var(--amber)'}}>{title}</h2>
+        <div className="space-y-5" style={{borderLeft: '2px solid var(--amber-dim)', paddingLeft: '24px'}}>
             {data.map((item, index) => (
                 <ResumeCard
                     key={index}

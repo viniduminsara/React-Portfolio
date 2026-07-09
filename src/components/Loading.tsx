@@ -1,10 +1,15 @@
-import loadingGif from "../assets/img/logo_animated.gif"
-
 const Loading = () => {
     return (
-        <div className='w-full h-screen flex items-center justify-center bg-[#08020F] '>
-            <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
-                <img src={loadingGif} alt="laoding image" className='w-64 h-64'/>
+        <div className='w-full h-screen flex items-center justify-center' style={{background: 'var(--bg)'}}>
+            <div className="terminal-text text-center">
+                <p className="text-2xl font-bold" style={{color: 'var(--amber)'}}>VM<span style={{color: 'var(--text-muted)'}}>_</span></p>
+                <p className="text-sm mt-4" style={{color: 'var(--text-muted)'}}>
+                    <span style={{color: 'var(--amber)'}}>$</span> loading...
+                    <span className="inline-block w-2 h-4 ml-1" style={{
+                        background: 'var(--amber)',
+                        animation: 'blink 1s step-end infinite'
+                    }}/>
+                </p>
             </div>
         </div>
     )

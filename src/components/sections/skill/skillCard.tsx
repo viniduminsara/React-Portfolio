@@ -1,16 +1,18 @@
 import {motion} from "framer-motion";
-import {IconNode} from "lucide-react";
+import {ComponentType} from "react";
 
 const itemVariants = {
     hidden: {opacity: 0, y: 20},
-    visible: {
-        opacity: 1,
-        y: 0
-    }
+    visible: {opacity: 1, y: 0}
 };
 
+interface IconProps {
+    size?: number;
+    className?: string;
+}
+
 interface SkillCardProps {
-    icon: IconNode;
+    icon: ComponentType<IconProps>;
     name: string;
 }
 
@@ -20,10 +22,12 @@ const SkillCard = (skill: SkillCardProps) => {
     return (
         <motion.div
             variants={itemVariants}
-            className="flex items-center gap-3 p-3 bg-white/30 dark:bg-white/5 rounded-lg border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-md transition-shadow duration-200"
+            className="terminal-panel flex items-center gap-3 p-3"
         >
-            <Icon className="w-5 h-5 text-purple-600"/>
-            <span className="text-gray-700 dark:text-gray-300">{skill.name}</span>
+            <span className="skill-icon">
+                <Icon size={20}/>
+            </span>
+            <span style={{color: 'var(--text-muted)', fontSize: '14px'}}>{skill.name}</span>
         </motion.div>
     );
 }

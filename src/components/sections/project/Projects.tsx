@@ -9,9 +9,7 @@ const containerVariants = {
     hidden: {opacity: 0},
     visible: {
         opacity: 1,
-        transition: {
-            staggerChildren: 0.2
-        }
+        transition: {staggerChildren: 0.2}
     }
 };
 
@@ -29,8 +27,8 @@ export default function Projects() {
                     transition={{duration: 0.5}}
                     className="space-y-4"
                 >
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Projects</h2>
-                    <div className="w-20 h-1 bg-purple-600"></div>
+                    <h2 className="section-title">Featured Projects</h2>
+                    <div className="section-divider"></div>
                 </motion.div>
 
                 <motion.div
@@ -52,7 +50,12 @@ export default function Projects() {
                 >
                     <Link
                         to="/projects"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-colors duration-200"
+                        className="terminal-text text-sm font-semibold px-6 py-3 rounded-sm inline-flex items-center gap-2 no-underline"
+                        style={{
+                            background: 'var(--amber)',
+                            color: '#1A1200',
+                            border: '1px solid transparent'
+                        }}
                     >
                         View All Projects
                         <ArrowRight className="w-4 h-4"/>

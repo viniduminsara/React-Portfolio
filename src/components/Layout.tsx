@@ -17,7 +17,12 @@ const Layout = () => {
     }, [darkMode]);
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden transition-colors duration-300">
+        <div className="min-h-screen overflow-hidden transition-colors duration-300" style={{background: 'var(--bg)'}}>
+            <div className="fixed inset-0 overflow-hidden pointer-events-none"
+                 style={{background: 'var(--amber-glow)'}}
+            />
+            <div className="scanlines fixed inset-0 z-[1]"/>
+
             <Navbar
                 darkMode={darkMode}
                 setDarkMode={setDarkMode}
@@ -28,20 +33,13 @@ const Layout = () => {
                 onClose={() => setIsMobileMenuOpen(false)}
             />
 
-            {/* Purple gradient effects */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                <div className="purple-blur -top-10 -left-10"></div>
-                <div className="purple-blur top-1/3 -right-10"></div>
-                {/*<div className="purple-blur bottom-1/4 left-1/3"></div>*/}
-                <div className="absolute inset-0 purple-gradient"></div>
+            <div className="relative z-10">
+                <Outlet/>
             </div>
-
-            <Outlet/>
 
             <Footer/>
         </div>
     )
-
 }
 
 export default Layout;

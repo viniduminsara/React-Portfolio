@@ -7,9 +7,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: {
-            duration: 0.5
-        }
+        transition: {duration: 0.5}
     }
 };
 
@@ -29,7 +27,7 @@ const ProjectCard = (project: ProjectCardProps) => {
     return (
         <motion.div
             variants={itemVariants}
-            className="group bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="terminal-panel overflow-hidden group cursor-pointer"
             onClick={() => navigate(`/project/${project.slug}`)}
         >
             <div className="relative aspect-video overflow-hidden">
@@ -41,11 +39,11 @@ const ProjectCard = (project: ProjectCardProps) => {
             </div>
 
             <div className="p-6 space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold" style={{color: 'var(--text)'}}>
                     {project.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm" style={{color: 'var(--text-muted)'}}>
                     {project.description.slice(0, 70)}...
                 </p>
 
@@ -53,7 +51,14 @@ const ProjectCard = (project: ProjectCardProps) => {
                     {project.tags.map((tag, tagIndex) => (
                         <span
                             key={tagIndex}
-                            className="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 rounded-full"
+                            className="px-3 py-1 text-sm rounded-sm"
+                            style={{
+                                background: 'var(--amber-glow)',
+                                color: 'var(--amber)',
+                                border: '1px solid var(--amber-dim)',
+                                fontFamily: "'IBM Plex Mono', monospace",
+                                fontSize: '11px'
+                            }}
                         >
                             {tag}
                         </span>
@@ -65,7 +70,10 @@ const ProjectCard = (project: ProjectCardProps) => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                        className="inline-flex items-center gap-2 text-sm transition-colors"
+                        style={{color: 'var(--text-muted)'}}
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--amber)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                     >
                         <Github className="w-5 h-5"/>
                         Code
@@ -75,7 +83,10 @@ const ProjectCard = (project: ProjectCardProps) => {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                            className="inline-flex items-center gap-2 text-sm transition-colors"
+                            style={{color: 'var(--text-muted)'}}
+                            onMouseEnter={e => e.currentTarget.style.color = 'var(--amber)'}
+                            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                         >
                             <ExternalLink className="w-5 h-5"/>
                             Live Project

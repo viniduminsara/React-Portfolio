@@ -1,5 +1,4 @@
-import {ArrowRight, Calendar, Clock, User} from "lucide-react";
-import {Link} from "react-router-dom";
+import {Calendar, Clock, User} from "lucide-react";
 import {motion} from "framer-motion";
 
 const itemVariants = {
@@ -7,9 +6,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: {
-            duration: 0.5
-        }
+        transition: {duration: 0.5}
     }
 };
 
@@ -25,11 +22,7 @@ const BlogCard = (post: BlogCardProps) => {
 
     const extractImageUrlWithSplit = (htmlContent) => {
         const srcIndex = htmlContent.indexOf('src="');
-
-        if (srcIndex === -1) {
-            return null;
-        }
-
+        if (srcIndex === -1) return null;
         const srcPart = htmlContent.slice(srcIndex + 5);
         return srcPart.split('"')[0];
     };
@@ -37,7 +30,7 @@ const BlogCard = (post: BlogCardProps) => {
     return (
         <motion.article
             variants={itemVariants}
-            className="group bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="terminal-panel overflow-hidden group"
         >
             <div className="relative aspect-video overflow-hidden">
                 <img
@@ -48,26 +41,26 @@ const BlogCard = (post: BlogCardProps) => {
             </div>
 
             <div className="p-6 space-y-4">
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4"/>
-                    {post.pubDate.split(' ')[0]}
-                </span>
+                <div className="flex items-center gap-4 text-sm" style={{color: 'var(--text-muted)'}}>
                     <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4"/>
+                        <Calendar className="w-4 h-4"/>
+                        {post.pubDate.split(' ')[0]}
+                    </span>
+                    <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4"/>
                         {(post.content.length / 1000).toFixed(0)} min read
-                </span>
+                    </span>
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold" style={{color: 'var(--text)'}}>
                     {post.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300">
-                    {post.content.split('<p>')[1].slice(0, 70)}...
+                <p className="text-sm" style={{color: 'var(--text-muted)'}}>
+                    {post.content.split('<p>')[1]?.slice(0, 70)}...
                 </p>
 
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm" style={{color: 'var(--text-muted)'}}>
                     <User className="w-4 h-4"/>
                     <span>{post.author}</span>
                 </div>
@@ -76,10 +69,10 @@ const BlogCard = (post: BlogCardProps) => {
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+                    className="inline-flex items-center gap-2 text-sm transition-colors no-underline"
+                    style={{color: 'var(--amber)'}}
                 >
-                    Read in Medium
-                    <ArrowRight className="w-4 h-4"/>
+                    Read in Medium →
                 </a>
             </div>
         </motion.article>

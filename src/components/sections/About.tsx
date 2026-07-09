@@ -1,6 +1,6 @@
 import {motion} from 'framer-motion';
 import {useInView} from 'react-intersection-observer';
-import {Code2, Laptop, Smartphone, Sparkles} from 'lucide-react';
+import {Code2, Cpu, Laptop, Smartphone, Sparkles} from 'lucide-react';
 
 export default function About() {
     const [ref, inView] = useInView({
@@ -16,8 +16,8 @@ export default function About() {
                     transition={{duration: 0.5}}
                     className="space-y-4"
                 >
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">About Me</h2>
-                    <div className="w-20 h-1 bg-purple-600"></div>
+                    <h2 className="section-title">About Me</h2>
+                    <div className="section-divider"></div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12">
@@ -27,16 +27,11 @@ export default function About() {
                         transition={{duration: 0.5, delay: 0.2}}
                         className="space-y-6"
                     >
-                        <p className="text-lg text-justify text-gray-600 dark:text-gray-300">
-                            Hi, I’m Vinidu Minsara, a passionate software developer with a knack for solving complex
-                            problems and creating efficient, user-friendly applications. I specialize in full-stack web
-                            development, mobile app development, and I enjoy bringing ideas to life through clean and
-                            scalable solutions.
+                        <p className="text-md text-justify leading-relaxed" style={{color: 'var(--text-muted)'}}>
+                            I'm Vinidu Minsara, a recently graduated Software Engineer (BSc Hons in Software Engineering) with a strong focus on <span style={{color: 'var(--amber)'}}>full stack development</span> and growing expertise in <span style={{color: 'var(--amber)'}}>AI/ML</span>. I build efficient, scalable, and user friendly applications, from responsive frontends to robust backend systems. My core stack includes <span style={{color: 'var(--amber)'}}>React</span>, <span style={{color: 'var(--amber)'}}>Next.js</span>, <span style={{color: 'var(--amber)'}}>Angular</span>, <span style={{color: 'var(--amber)'}}>Node.js</span>, and <span style={{color: 'var(--amber)'}}>Spring Boot</span>, and I've applied machine learning techniques (<span style={{color: 'var(--amber)'}}>PyTorch</span>, <span style={{color: 'var(--amber)'}}>TensorFlow</span>) to real world problems like <span style={{color: 'var(--amber)'}}>CNN based image classification</span>. I enjoy turning ideas into clean, production ready solutions and I'm always exploring new ways to combine software engineering with intelligent systems.
                         </p>
-                        <p className="text-lg text-justify text-gray-600 dark:text-gray-300">
-                            With a background in Graduate Diploma in Software Engineering from IJSE and hands-on experience in
-                            building diverse projects, I have developed expertise in technologies like React,
-                            Node.js, Spring Boot, Firebase, or MongoDB.
+                        <p className="text-md text-justify leading-relaxed" style={{color: 'var(--text-muted)'}}>
+                            I also have hands on experience with cloud infrastructure (<span style={{color: 'var(--amber)'}}>AWS</span>, <span style={{color: 'var(--amber)'}}>Oracle Cloud</span>) and <span style={{color: 'var(--amber)'}}>Docker</span>, and I enjoy deploying and maintaining my own projects on self hosted infrastructure.
                         </p>
                     </motion.div>
 
@@ -46,45 +41,22 @@ export default function About() {
                         transition={{duration: 0.5, delay: 0.4}}
                         className="grid grid-cols-2 gap-6"
                     >
-                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
-                            <Laptop className="w-8 h-8 text-purple-600 mb-4"/>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Frontend Development
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Creating responsive and intuitive user interfaces
-                            </p>
-                        </div>
-
-                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
-                            <Code2 className="w-8 h-8 text-purple-600 mb-4"/>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Backend Development
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Building robust and scalable server solutions
-                            </p>
-                        </div>
-
-                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-lg shadow-lg">
-                            <Smartphone className="w-8 h-8 text-purple-600 mb-4"/>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Mobile Development
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Developing user-friendly mobile apps
-                            </p>
-                        </div>
-
-                        <div className="p-6 bg-white/30 dark:bg-white/5 rounded-xl border border-white/10 backdrop-blur-3xl shadow-lg">
-                            <Sparkles className="w-8 h-8 text-purple-600 mb-4"/>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                UI/UX Design
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Designing beautiful and functional interfaces
-                            </p>
-                        </div>
+                        {[
+                            {icon: Laptop, title: 'Frontend Development', desc: 'Creating responsive and intuitive user interfaces'},
+                            {icon: Code2, title: 'Backend Development', desc: 'Building robust and scalable server solutions'},
+                            {icon: Cpu, title: 'AI / ML', desc: 'Training models and experimenting with ML algorithms'},
+                            {icon: Sparkles, title: 'UI/UX Design', desc: 'Designing beautiful and functional interfaces'},
+                        ].map((card, i) => (
+                            <div key={i} className="terminal-panel p-6">
+                                <card.icon className="w-8 h-8 mb-4" style={{color: 'var(--amber)'}}/>
+                                <h3 className="text-xl font-semibold mb-2" style={{color: 'var(--text)'}}>
+                                    {card.title}
+                                </h3>
+                                <p style={{color: 'var(--text-muted)', fontSize: '14px'}}>
+                                    {card.desc}
+                                </p>
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
             </div>

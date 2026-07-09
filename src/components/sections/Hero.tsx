@@ -1,97 +1,110 @@
-import {ArrowRight, Github, Sparkles} from 'lucide-react';
 import {motion} from 'framer-motion';
 import CodeBlock from '../CodeBlock.tsx';
-import linkedin from "../../assets/img/linkedin-brands-solid.svg";
-import linkedinLight from "../../assets/img/linkedin-brands-solid-light.svg";
 
 export default function Hero() {
     return (
-        <section className="min-h-[90vh] flex flex-col justify-center pt-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <motion.div
+                initial={{opacity: 0, x: -50}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.5}}
+            >
                 <motion.div
-                    initial={{opacity: 0, x: -50}}
-                    animate={{opacity: 1, x: 0}}
-                    transition={{duration: 0.5}}
-                    className="space-y-6 pt-8 md:pt-0"
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: 0.2}}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm text-xs terminal-text"
+                    style={{
+                        color: 'var(--amber)',
+                        background: 'var(--amber-glow)',
+                        border: '1px solid var(--amber-dim)',
+                        marginBottom: '28px'
+                    }}
                 >
-                    <motion.div
-                        initial={{opacity: 0, y: 20}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.2}}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 text-sm font-medium"
-                    >
-                        <Sparkles className="w-4 h-4"/>
-                        <span>Available for new opportunities</span>
-                    </motion.div>
-
-                    <motion.p
-                        initial={{opacity: 0, y: 20}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.4}}
-                        className="text-4xl font-semibold text-purple-600 dark:text-gray-300"
-                    >
-                        Vinidu Minsara
-                    </motion.p>
-
-                    <motion.p
-                        initial={{opacity: 0, y: 20}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.4}}
-                        className="text-lg md:text-xl font-light text-gray-600 dark:text-gray-300"
-                    >
-                        I am a passionate software developer from Sri Lanka crafting efficient and user-friendly
-                        solutions with modern technologies.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{opacity: 0, y: 20}}
-                        animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.6}}
-                        className="flex flex-wrap gap-2 lg:gap-4 pt-4"
-                    >
-                        <motion.a
-                            href="#contact"
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-medium transition-colors duration-200"
-                            whileHover={{scale: 1.05}}
-                            whileTap={{scale: 0.95}}
-                        >
-                            Let's talk
-                            <ArrowRight className="w-4 h-4"/>
-                        </motion.a>
-
-                        <motion.a
-                            href="https://github.com/viniduminsara"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 lg:px-6 py-3 rounded-full bg-white/30 dark:bg-white/5 border border-white/10 backdrop-blur-3xl shadow-lg text-gray-900 dark:text-white font-medium transition-colors duration-200"
-                            whileHover={{scale: 1.05}}
-                            whileTap={{scale: 0.95}}
-                        >
-                            <Github className="w-5 h-5"/>
-                            <span className='hidden lg:block'>View GitHub</span>
-                        </motion.a>
-                        <motion.a
-                            href="https://www.linkedin.com/in/vinidu-minsara/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-white/30 dark:bg-white/5 border border-white/10 backdrop-blur-3xl shadow-lg text-gray-900 dark:text-white font-medium transition-colors duration-200"
-                            whileHover={{scale: 1.05}}
-                            whileTap={{scale: 0.95}}
-                        >
-                            <img src={linkedin} alt="linkedin" className='w-6 h-6 text-white hidden dark:block'/>
-                            <img src={linkedinLight} alt="linkedin" className='w-6 h-6 text-white dark:hidden block'/>
-                        </motion.a>
-                    </motion.div>
+                    <span className="w-[7px] h-[7px] rounded-full" style={{
+                        background: 'var(--ok)',
+                        boxShadow: '0 0 6px var(--ok)',
+                        animation: 'pulse 2s ease-in-out infinite'
+                    }}/>
+                    status: open_to_work
                 </motion.div>
 
+                <h1 className="terminal-text font-bold" style={{
+                    fontSize: 'clamp(38px, 4.6vw, 58px)',
+                    lineHeight: 1.05,
+                    letterSpacing: '-0.5px',
+                    margin: '0 0 22px'
+                }}>
+                    Vinidu<br/>Minsara
+                    <span className="cursor-block inline-block w-[0.5ch]" style={{
+                        background: 'var(--amber)',
+                        animation: 'blink 1.5s step-end infinite',
+                        marginLeft: '8px',
+                        height: '1.1em',
+                        verticalAlign: 'text-top'
+                    }}/>
+                </h1>
+
+                    <p className="text-[17px] leading-relaxed max-w-[520px] mb-9" style={{color: 'var(--text-muted)'}}>
+                        Software Engineer from Sri Lanka specializing in full stack development and AI/ML powered solutions.
+                    </p>
+
                 <motion.div
-                    initial={{opacity: 0, x: 50}}
-                    animate={{opacity: 1, x: 0}}
-                    transition={{duration: 0.5, delay: 0.2}}
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: 0.6}}
+                    className="flex flex-wrap items-center gap-3.5"
                 >
-                    <CodeBlock/>
+                    <a
+                        href="#contact"
+                        className="terminal-text font-semibold text-sm px-[22px] py-3 rounded-sm inline-flex items-center gap-2 no-underline"
+                        style={{
+                            background: 'var(--amber)',
+                            color: '#1A1200',
+                            border: '1px solid transparent'
+                        }}
+                    >
+                        Let's talk →
+                    </a>
+                    <a
+                        href="https://github.com/viniduminsara"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="terminal-text text-sm px-[22px] py-3 rounded-sm inline-flex items-center gap-2 no-underline"
+                        style={{
+                            border: '1px solid var(--panel-border)',
+                            color: 'var(--text)',
+                            background: 'var(--panel)'
+                        }}
+                    >
+                        View GitHub
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/vinidu-minsara/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-[42px] h-[42px] rounded-sm inline-flex items-center justify-center no-underline"
+                        style={{
+                            border: '1px solid var(--panel-border)',
+                            background: 'var(--panel)',
+                            color: 'var(--text-muted)',
+                            fontFamily: "'IBM Plex Mono', monospace",
+                            fontSize: '15px'
+                        }}
+                        aria-label="LinkedIn"
+                    >
+                        in
+                    </a>
                 </motion.div>
-            </div>
-        </section>
+            </motion.div>
+
+            <motion.div
+                initial={{opacity: 0, x: 50}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.5, delay: 0.2}}
+            >
+                <CodeBlock/>
+            </motion.div>
+        </div>
     );
 }
