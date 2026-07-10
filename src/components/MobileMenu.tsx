@@ -1,6 +1,7 @@
-import {motion, AnimatePresence} from 'framer-motion';
+import {useEffect} from 'react';
+import {createPortal} from 'react-dom';
 import {X} from 'lucide-react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 const navItems = [
     {name: 'Home', path: '/'},
@@ -14,77 +15,76 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({isOpen, onClose}: MobileMenuProps) {
-    const menuVariants = {
-        closed: {
-            x: '100%',
-            transition: {type: 'spring', stiffness: 300, damping: 30},
-        },
-        open: {
-            x: 0,
-            transition: {type: 'spring', stiffness: 300, damping: 30},
-        },
-    };
+    const {pathname} = useLocation();
 
-    const itemVariants = {
-        closed: {x: 50, opacity: 0},
-        open: {x: 0, opacity: 1},
-    };
+    useEffect(() => { onClose(); }, [pathname]);
 
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <>
-                    <motion.div
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
+    if (!isOpen) return null;
+
+    return createPortal(
+        <>
+            <div
+                className="mobile-backdrop"
+                onClick={onClose}
+                style={{
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'rgba(0,0,0,0.6)',
+                    backdropFilter: 'blur(4px)',
+                    WebkitBackdropFilter: 'blur(4px)',
+                    zIndex: 9998,
+                }}
+            />
+            <div
+                className="mobile-sidebar"
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    width: '288px',
+                    zIndex: 9999,
+                    background: 'var(--panel)',
+                    borderLeft: '1px solid var(--panel-border)',
+                    padding: '24px',
+                    boxShadow: '0 0 40px rgba(0,0,0,0.4)',
+                }}
+            >
+                <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '32px'}}>
+                    <button
                         onClick={onClose}
-                        style={{background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)'}}
-                        className="fixed inset-0 z-50"
-                    />
-
-                    <motion.div
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                        variants={menuVariants}
-                        className="fixed top-0 right-0 bottom-0 w-64 shadow-xl z-50 p-6"
                         style={{
-                            background: 'var(--panel)',
-                            borderLeft: '1px solid var(--panel-border)',
+                            padding: '8px',
+                            color: 'var(--text-muted)',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
                         }}
+                        aria-label="Close menu"
                     >
-                        <div className="flex justify-end mb-8">
-                            <button
-                                onClick={onClose}
-                                className="p-2 rounded-sm transition-colors"
-                                style={{color: 'var(--text-muted)'}}
-                            >
-                                <X className="w-6 h-6"/>
-                            </button>
-                        </div>
+                        <X className="w-6 h-6"/>
+                    </button>
+                </div>
 
-                        <nav className="space-y-4">
-                            {navItems.map((item, i) => (
-                                <motion.div
-                                    key={item.name}
-                                    variants={itemVariants}
-                                    transition={{delay: i * 0.1}}
-                                >
-                                    <Link
-                                        to={item.path}
-                                        onClick={onClose}
-                                        className="block text-lg terminal-text no-underline transition-colors"
-                                        style={{color: 'var(--text-muted)'}}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </nav>
-                    </motion.div>
-                </>
-            )}
-        </AnimatePresence>
+                <nav style={{display: 'flex', flexDirection: 'column', gap: '16px'}}>
+                    {navItems.map(item => (
+                        <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={onClose}
+                            style={{
+                                color: 'var(--text-muted)',
+                                textDecoration: 'none',
+                                fontSize: '18px',
+                                fontFamily: "'IBM Plex Mono', monospace",
+                            }}
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+        </>,
+        document.body
     );
 }

@@ -39,7 +39,7 @@ export default function About() {
                         initial={{opacity: 0, x: 50}}
                         animate={inView ? {opacity: 1, x: 0} : {}}
                         transition={{duration: 0.5, delay: 0.4}}
-                        className="grid grid-cols-2 gap-6"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
                     >
                         {[
                             {icon: Laptop, title: 'Frontend Development', desc: 'Creating responsive and intuitive user interfaces'},
@@ -47,12 +47,12 @@ export default function About() {
                             {icon: Cpu, title: 'AI / ML', desc: 'Training models and experimenting with ML algorithms'},
                             {icon: Sparkles, title: 'UI/UX Design', desc: 'Designing beautiful and functional interfaces'},
                         ].map((card, i) => (
-                            <div key={i} className="terminal-panel p-6">
-                                <card.icon className="w-8 h-8 mb-4" style={{color: 'var(--amber)'}}/>
-                                <h3 className="text-xl font-semibold mb-2" style={{color: 'var(--text)'}}>
+                            <div key={i} className="terminal-panel p-4 sm:p-6">
+                                <card.icon className="w-6 h-6 sm:w-8 sm:h-8 mb-3 sm:mb-4" style={{color: 'var(--amber)'}}/>
+                                <h3 className="text-base sm:text-xl font-semibold mb-1 sm:mb-2" style={{color: 'var(--text)'}}>
                                     {card.title}
                                 </h3>
-                                <p style={{color: 'var(--text-muted)', fontSize: '14px'}}>
+                                <p style={{color: 'var(--text-muted)', fontSize: '13px'}}>
                                     {card.desc}
                                 </p>
                             </div>

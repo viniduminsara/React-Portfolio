@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 const CodeBlock = () => {
     return (
         <div
-            className="terminal-panel"
+            className="terminal-panel overflow-x-auto"
         >
             <div className="terminal-panel-head">
                 <span style={{color: 'var(--text-muted)'}}>~/whoami.log</span>
@@ -34,7 +34,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>role</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">role</span>
                     <span style={{color: 'var(--text)'}}>fullstack_developer</span>
                 </motion.div>
                 <motion.div
@@ -44,7 +44,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>frontend</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">frontend</span>
                     <span style={{color: 'var(--text)'}}>react · angular</span>
                 </motion.div>
                 <motion.div
@@ -54,7 +54,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>backend</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">backend</span>
                     <span style={{color: 'var(--text)'}}>node.js · spring_boot</span>
                 </motion.div>
                 <motion.div
@@ -64,7 +64,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>ai/ml</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">ai/ml</span>
                     <span style={{color: 'var(--text)'}}>pytorch · scikit-learn</span>
                 </motion.div>
                 <motion.div
@@ -74,7 +74,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>infra</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">infra</span>
                     <span style={{color: 'var(--text)'}}>docker · aws</span>
                 </motion.div>
                 <motion.div
@@ -84,7 +84,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>location</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">location</span>
                     <span style={{color: 'var(--text)'}}>kalutara, sri lanka</span>
                 </motion.div>
                 <motion.div
@@ -94,7 +94,7 @@ const CodeBlock = () => {
                     className="flex gap-2.5"
                 >
                     <span style={{color: 'var(--ok)'}}>[ OK ]</span>
-                    <span style={{color: 'var(--text-muted)', minWidth: '108px'}}>education</span>
+                    <span style={{color: 'var(--text-muted)'}} className="term-label">education</span>
                     <span style={{color: 'var(--text)'}}>bsc_software_engineering</span>
                 </motion.div>
                 <br/>

@@ -17,7 +17,7 @@ const Layout = () => {
     }, [darkMode]);
 
     return (
-        <div className="min-h-screen overflow-hidden transition-colors duration-300" style={{background: 'var(--bg)'}}>
+        <div className="min-h-screen transition-colors duration-300" style={{background: 'var(--bg)'}}>
             <div className="fixed inset-0 overflow-hidden pointer-events-none"
                  style={{background: 'var(--amber-glow)'}}
             />

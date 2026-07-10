@@ -12,6 +12,16 @@
   50% { opacity: 0.4; }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cursor-blink, .cursor-block, [style*="animation: blink"], [style*="animation: pulse"] {
     animation: none !important;
@@ -29,6 +39,13 @@ html.snap-home {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding-top: 64px;
+}
+
+@media (max-width: 767px) {
+  .snap-section {
+    padding-top: 72px;
+  }
 }
 
 :root {
@@ -132,6 +149,29 @@ html.snap-home {
 
   :root:not(.dark) .scanlines {
     opacity: 0;
+  }
+
+  .term-label {
+    min-width: 108px;
+  }
+
+  .mobile-backdrop {
+    animation: fadeIn 200ms ease-out;
+  }
+
+  .mobile-sidebar {
+    animation: slideInRight 250ms ease-out;
+  }
+
+  @media (max-width: 767px) {
+    .terminal-panel-body {
+      padding: 12px;
+      font-size: 11px;
+    }
+
+    .term-label {
+      min-width: 72px;
+    }
   }
 
   .terminal-text {
